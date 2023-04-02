@@ -12,7 +12,7 @@ namespace Chaining_and_Continuation
             Task<int[]> task1 = Task.Factory.StartNew(TenRandomInts);
             Task<int[]> task2 = task1.ContinueWith(t => MultiplyRandomArray(t.Result));
             Task<int[]> task3 = task2.ContinueWith(t => SortAscending(t.Result));
-            Task<double> task4 = task1.ContinueWith(t => GetAverageValue(t.Result));
+            Task<double> task4 = task3.ContinueWith(t => GetAverageValue(t.Result));
 
             task4.Wait();
             Console.WriteLine($"\nAverage value: {task4.Result}");

@@ -1,10 +1,7 @@
-﻿using Chaining_and_Continuation;
-using System;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Shouldly;
 using Xunit;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using static Chaining_and_Continuation.Tasks;
 
 namespace Chaining.Tests
@@ -31,12 +28,10 @@ namespace Chaining.Tests
         [Fact]
         public void MultiplyRandomArrayTest()
         {
-            ////Arrange
-            //int[] array = Enumerable.Range(1, 10).ToArray();
-
             // Arrange
             int[] arr = new int[] { 1, 2, 3 };
-            int[] expected = arr.Select(i => i * new Random().Next(1, 11)).ToArray();
+            int rnd = new Random().Next(1, 11);
+            int[] expected = arr.Select(i => i * rnd).ToArray();
 
             // Act
             int[] result = MultiplyRandomArray(arr);
